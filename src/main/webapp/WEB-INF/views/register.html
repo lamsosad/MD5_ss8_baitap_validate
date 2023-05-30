@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        .table {
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px 20px;
+        }
+
+        input {
+            height: 25px;
+            border-radius: 10px;
+        }
+        p{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<h1 style="text-align: center;">Register</h1>
+<div style="display: flex;justify-content: center;">
+    <div class="table">
+        <form th:action="@{/add}" method="post" th:object="${register}">
+            <table style="padding: 20px;">
+                <tr>
+                    <th>Họ và Tên:</th>
+                    <td>
+                        <input type="text" placeholder="Nhập Tên..." th:field="*{name}">
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Số điện thoại:</th>
+                    <td>
+                        <input type="text" placeholder="Nhập số điện thoại..." th:field="*{phone}">
+                        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>
+                        <input type="text" placeholder="Nhập email..." th:field="*{email}">
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    </td>
+                </tr>
+
+            </table>
+            <div style="display: flex;justify-content: center;padding: 5px;">
+                <button type="submit" style="background-color: orange;border-radius: 20px;">Đăng kí</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
